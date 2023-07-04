@@ -1,0 +1,20 @@
+class Solution{
+public:
+    string LCP(string ar[], int n)
+    {
+        // code here
+         sort(ar, ar + n);
+         string prefix = "";
+        for (int i = 0; i < ar[0].length(); i++) {
+            char ch = ar[0][i];
+            for (int j = 1; j < n; j++) {
+                if (i >= ar[j].length() || ar[j][i] != ch) {
+                    return (prefix.empty() ? "-1" : prefix);
+                }
+            }
+            prefix += ch;
+        }
+
+        return (prefix.empty() ? "-1" : prefix);
+    }
+};
